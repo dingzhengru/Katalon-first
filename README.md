@@ -7,3 +7,11 @@
 ## 更新瀏覽器驅動程式
 
 Tools -> Update WebDrivers
+
+## Test Cases
+
+## Object Repository
+
+## Test Suites
+
+## Keywords
