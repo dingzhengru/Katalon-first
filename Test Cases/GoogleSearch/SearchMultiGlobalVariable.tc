@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>SearchMulti</name>
+   <name>SearchMultiGlobalVariable</name>
    <tag></tag>
    <comment></comment>
    <testCaseGuid>cba8f786-fce7-48ce-931b-52c3bc2143d9</testCaseGuid>

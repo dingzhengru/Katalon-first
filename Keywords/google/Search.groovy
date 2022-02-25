@@ -25,7 +25,7 @@ public class Search {
 	def static void submitSearch(String url,String search){
 
 		WebUI.openBrowser(url)
-//		WebUI.navigateToUrl(url)
+		//		WebUI.navigateToUrl(url)
 		WebUI.waitForPageLoad(GlobalVariable.waitPresentTimeout)
 		WebUI.maximizeWindow()
 
@@ -37,13 +37,31 @@ public class Search {
 		WebUI.closeBrowser()
 	}
 	@Keyword
+	def static void submitSearchMulti(String url,List searchValueList){
+
+		WebUI.openBrowser(url)
+		WebUI.waitForPageLoad(GlobalVariable.waitPresentTimeout)
+		WebUI.maximizeWindow()
+
+		for (val in searchValueList) {
+			WebUI.navigateToUrl(url)
+			WebUI.waitForElementVisible(findTestObject('Google/input_search'), GlobalVariable.waitPresentTimeout)
+			WebUI.sendKeys(findTestObject('Google/input_search'), val)
+			WebUI.submit(findTestObject('Google/form_search'))
+			WebUI.delay(1)
+		}
+
+		WebUI.closeBrowser()
+	}
+	@Keyword
 	def static void submitSearchWithGlobalVariable(){
 		submitSearch(GlobalVariable.baseUrl, GlobalVariable.searchValue)
 	}
 	@Keyword
 	def static void submitSearchMultiWithGlobalVariable(){
-		for (val in GlobalVariable.searchValueList) {
-			submitSearch(GlobalVariable.baseUrl, val)
-		}
+		submitSearchMulti(GlobalVariable.baseUrl, GlobalVariable.searchValueList)
+		//		for (val in GlobalVariable.searchValueList) {
+		//			submitSearchMulti(GlobalVariable.baseUrl, val)
+		//		}
 	}
 }
