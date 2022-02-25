@@ -25,6 +25,7 @@ public class Search {
 	def static void submitSearch(String url,String search){
 
 		WebUI.openBrowser(url)
+//		WebUI.navigateToUrl(url)
 		WebUI.waitForPageLoad(GlobalVariable.waitPresentTimeout)
 		WebUI.maximizeWindow()
 
@@ -38,5 +39,11 @@ public class Search {
 	@Keyword
 	def static void submitSearchWithGlobalVariable(){
 		submitSearch(GlobalVariable.baseUrl, GlobalVariable.searchValue)
+	}
+	@Keyword
+	def static void submitSearchMultiWithGlobalVariable(){
+		for (val in GlobalVariable.searchValueList) {
+			submitSearch(GlobalVariable.baseUrl, val)
+		}
 	}
 }
